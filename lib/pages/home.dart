@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ship_tracker/components/bottom_navbar.dart';
 import 'package:ship_tracker/components/order_card.dart';
-import 'package:ship_tracker/components/orderby.dart';
 import 'package:ship_tracker/components/welcome_header.dart';
 import 'package:ship_tracker/components/search_bar.dart';
+import 'package:ship_tracker/pages/create_order_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -14,14 +14,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  int _selectedIndex = 0;
-
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -33,7 +25,7 @@ class _HomePageState extends State<HomePage> {
           foregroundColor: Colors.white,
           elevation: 0,
           title: Text(
-            'Ship-Tracker',
+            'Inicio',
             style: GoogleFonts.archivoBlack(
               fontSize: 20,
               color: Colors.white,
@@ -56,8 +48,6 @@ class _HomePageState extends State<HomePage> {
                 SizedBox(height: 16),
                 Search(),
                 SizedBox(height: 10),
-                OrderFilter(),
-                SizedBox(height: 16),
 
                 // 🧩 Cards de pedidos
                 OrderCard(
@@ -86,26 +76,12 @@ class _HomePageState extends State<HomePage> {
         // 🟩 Barra inferior y botón flotante
         bottomNavigationBar: const BottomNavBar(selectedIndex: 0),
 
+        // ✅ Botón flotante que lleva a CreateOrderPage
         floatingActionButton: GestureDetector(
           onTap: () {
-            // Aquí podrías abrir un modal o nueva vista de "Nuevo Pedido"
-            showModalBottomSheet(
-              context: context,
-              backgroundColor: Colors.transparent,
-              isScrollControlled: true,
-              builder: (context) {
-                return Container(
-                  decoration: const BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
-                  ),
-                  padding: const EdgeInsets.all(20),
-                  child: const Text(
-                    'Crear nuevo pedido',
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                  ),
-                );
-              },
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const CreateOrderPage()),
             );
           },
           child: Container(

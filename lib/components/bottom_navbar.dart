@@ -34,7 +34,7 @@ class BottomNavBar extends StatelessWidget {
           _navItem(context, Icons.receipt_long, 1, const OrdersPage()),
           const SizedBox(width: 40), // espacio para el botón flotante central
           _navItem(context, Icons.bar_chart, 2, const StatsPage()),
-          _navItem(context, Icons.person, 3, const ProfilePage()),
+          _navItem(context, Icons.person, 3, const EditProfilePage()),
         ],
       ),
     );

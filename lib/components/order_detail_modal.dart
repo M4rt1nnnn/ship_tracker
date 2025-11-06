@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:ship_tracker/pages/order_canceled.dart';
+import 'package:ship_tracker/pages/order_completed.dart';
+import '../components/button.dart';
 
 class OrderDetailModal extends StatelessWidget {
   const OrderDetailModal({super.key});
@@ -48,16 +51,41 @@ class OrderDetailModal extends StatelessWidget {
           const SizedBox(height: 16),
           ClipRRect(
             borderRadius: BorderRadius.circular(12),
-            child: Image.asset('images/map.png', fit: BoxFit.cover, height: 120, width: double.infinity),
+            child: Image.asset('images/map.jpg', fit: BoxFit.cover, height: 100, width: double.infinity),
           ),
           const SizedBox(height: 16),
           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              _actionButton('Confirmar', Colors.green, Colors.white),
-              _actionButton('Cancelar', Colors.red, Colors.white),
+              Expanded(
+                child: CustomButton(
+                  text: 'Confirmar',
+                  backgroundColor: Colors.green,
+                  textColor: const Color.fromARGB(255, 255, 255, 255),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const OrderSuccessPage()),
+                    );
+                  },
+                ),
+              ),
+              const SizedBox(width: 12), // separación entre botones
+              Expanded(
+                child: CustomButton(
+                  text: 'Cancelar',
+                  backgroundColor: Colors.red,
+                  textColor: const Color.fromARGB(255, 255, 255, 255),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const CancelOrderSuccessPage()),
+                    );
+                  },
+                ),
+              ),
             ],
           ),
+
         ],
       ),
     );

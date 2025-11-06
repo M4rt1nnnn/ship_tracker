@@ -4,12 +4,14 @@ class CustomTextField extends StatelessWidget {
   final String labelText;
   final bool obscureText;
   final TextInputType keyboardType;
+  final int maxLines;
 
   const CustomTextField({
     super.key,
     required this.labelText,
     this.obscureText = false,
     this.keyboardType = TextInputType.text,
+    this.maxLines = 1,
   });
 
   @override
@@ -17,6 +19,7 @@ class CustomTextField extends StatelessWidget {
     return SizedBox(
       width: 300, // ancho controlado
       child: TextField(
+        maxLines: maxLines,
         obscureText: obscureText,
         keyboardType: keyboardType,
         decoration: InputDecoration(
