@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:ship_tracker/components/text_field.dart';
 import 'package:ship_tracker/pages/home.dart';
 import '../components/button.dart';
+import 'package:ship_tracker/theme/theme.dart';
 
 class RegisterPage extends StatelessWidget {
   const RegisterPage({super.key});
@@ -10,19 +11,19 @@ class RegisterPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => FocusScope.of(context).unfocus(), // Cierra el teclado al tocar fuera
+      onTap: () => FocusScope.of(context).unfocus(), 
       child: Scaffold(
-        backgroundColor: const Color(0xFFF5F5F5),
+        backgroundColor: blanco,
 
         appBar: AppBar(
-          backgroundColor: const Color(0xFF15A77F),
-          foregroundColor: Colors.white,
+          backgroundColor: verde,
+          foregroundColor: blanco,
           elevation: 0,
           title: Text(
             'Registro',
             style: GoogleFonts.archivoBlack(
               fontSize: 20,
-              color: Colors.white,
+              color: blanco,
             ),
           ),
           centerTitle: true,
@@ -41,13 +42,13 @@ class RegisterPage extends StatelessWidget {
                   child: Stack(
                     alignment: Alignment.center,
                     children: [
-                      const CircleAvatar(
+                      CircleAvatar(
                         radius: 40,
-                        backgroundColor: Color(0xFFDADADA),
+                        backgroundColor: gris,
                         child: Icon(
                           Icons.person_outline,
                           size: 50,
-                          color: Colors.black54,
+                          color: negro,
                         ),
                       ),
 
@@ -56,24 +57,23 @@ class RegisterPage extends StatelessWidget {
                         right: 0,
                         child: GestureDetector(
                           onTap: () {
-                            //después colocar editar imagen
                           },
                           child: Container(
                             padding: const EdgeInsets.all(6),
                             decoration: BoxDecoration(
-                              color: const Color(0xFF15A77F),
+                              color: verde,
                               shape: BoxShape.circle,
                               boxShadow: [
                                 BoxShadow(
-                                  color: Colors.black26,
+                                  color: negro,
                                   blurRadius: 4,
                                   offset: const Offset(0, 2),
                                 ),
                               ],
                             ),
-                            child: const Icon(
-                              Icons.edit, // Ícono de lápiz
-                              color: Colors.white,
+                            child: Icon(
+                              Icons.edit, 
+                              color: blanco,
                               size: 18,
                             ),
                           ),
@@ -101,8 +101,8 @@ class RegisterPage extends StatelessWidget {
 
                 CustomButton(
                   text: 'Registrarse',
-                  backgroundColor: const Color(0xFF0E0E2D),
-                  textColor: Colors.white,
+                  backgroundColor: azulOscuro,
+                  textColor: blanco,
                   onPressed: () {
                     Navigator.push(
                       context,

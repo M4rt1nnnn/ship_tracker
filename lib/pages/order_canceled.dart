@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ship_tracker/pages/home.dart';
+import 'package:ship_tracker/theme/theme.dart';
 
 class CancelOrderSuccessPage extends StatefulWidget {
   const CancelOrderSuccessPage({super.key});
@@ -19,7 +20,6 @@ class _CancelOrderSuccessPageState extends State<CancelOrderSuccessPage>
   void initState() {
     super.initState();
 
-    // 🎬 Controlador de animación
     _controller = AnimationController(
       duration: const Duration(milliseconds: 1200),
       vsync: this,
@@ -32,7 +32,6 @@ class _CancelOrderSuccessPageState extends State<CancelOrderSuccessPage>
 
     _controller.forward();
 
-    // ⏳ Volver al Home automáticamente después de 3 segundos
     Future.delayed(const Duration(seconds: 3), () {
       Navigator.pushReplacement(
         context,
@@ -50,10 +49,9 @@ class _CancelOrderSuccessPageState extends State<CancelOrderSuccessPage>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: blanco,
       body: Column(
         children: [
-          // 🚚 Parte superior: imagen (ocupa la mitad)
           Expanded(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
@@ -65,36 +63,33 @@ class _CancelOrderSuccessPageState extends State<CancelOrderSuccessPage>
             ),
           ),
 
-          // 🔴 Parte inferior: mensaje (ocupa la otra mitad)
           Expanded(
             child: Container(
               width: double.infinity,
-              decoration: const BoxDecoration(
-                color: Color(0xFFE53935), // rojo fuerte
+              decoration: BoxDecoration(
+                color: rojo, 
                 borderRadius: BorderRadius.vertical(top: Radius.circular(40)),
               ),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  // 🚫 Animación del ícono
                   ScaleTransition(
                     scale: _scaleAnimation,
-                    child: const Icon(
+                    child: Icon(
                       Icons.block_rounded,
-                      color: Colors.white,
+                      color: blanco,
                       size: 80,
                     ),
                   ),
                   const SizedBox(height: 20),
 
-                  // ✨ Animación del texto
                   FadeTransition(
                     opacity: _fadeAnimation,
                     child: Text(
                       'Pedido Cancelado\nExitosamente',
                       textAlign: TextAlign.center,
                       style: GoogleFonts.archivoBlack(
-                        color: Colors.white,
+                        color: blanco,
                         fontSize: 22,
                       ),
                     ),

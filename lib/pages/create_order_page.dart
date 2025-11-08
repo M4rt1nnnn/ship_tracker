@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:ship_tracker/components/bottom_navbar.dart';
 import 'package:ship_tracker/components/text_field.dart';
 import 'package:ship_tracker/pages/home.dart';
+import 'package:ship_tracker/theme/theme.dart';
 import '../components/button.dart';
 
 class CreateOrderPage extends StatelessWidget {
@@ -11,19 +11,19 @@ class CreateOrderPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => FocusScope.of(context).unfocus(), // Cierra el teclado al tocar fuera
+      onTap: () => FocusScope.of(context).unfocus(), 
       child: Scaffold(
-        backgroundColor: const Color(0xFFF5F5F5),
+        backgroundColor: blanco,
 
         appBar: AppBar(
-          backgroundColor: const Color(0xFF15A77F),
-          foregroundColor: Colors.white,
+          backgroundColor: verde,
+          foregroundColor: blanco,
           elevation: 0,
           title: Text(
             'Nuevo pedido',
             style: GoogleFonts.archivoBlack(
               fontSize: 20,
-              color: Colors.white,
+              color: blanco,
             ),
           ),
           centerTitle: true,
@@ -41,7 +41,7 @@ class CreateOrderPage extends StatelessWidget {
                   'Datos del cliente',
                   style: GoogleFonts.archivoBlack(
                     fontSize: 20,
-                    color: const Color.fromARGB(255, 0, 0, 0),
+                    color: negro,
                   ),
                 ),
 
@@ -55,7 +55,7 @@ class CreateOrderPage extends StatelessWidget {
                   'Datos de entrega',
                   style: GoogleFonts.archivoBlack(
                     fontSize: 20,
-                    color: const Color.fromARGB(255, 0, 0, 0),
+                    color: negro,
                   ),
                 ),
                 const CustomTextField(labelText: 'Dirección de entrega'),
@@ -66,17 +66,17 @@ class CreateOrderPage extends StatelessWidget {
                   'Detalles adicionales',
                   style: GoogleFonts.archivoBlack(
                     fontSize: 20,
-                    color: const Color.fromARGB(255, 0, 0, 0),
+                    color: negro,
                   ),
                 ),
-                const CustomTextField(labelText: 'Notas adicionales', maxLines: 4),
+                const CustomTextField(labelText: 'Notas adicionales', /*maxLines: 4*/),
 
                 const SizedBox(height: 24),
 
                 CustomButton(
                   text: 'Guardar pedido',
-                  backgroundColor: const Color(0xFF15A77F),
-                  textColor: Colors.white,
+                  backgroundColor: verde,
+                  textColor: blanco,
                   onPressed: () {
                     Navigator.push(
                       context,
@@ -87,8 +87,8 @@ class CreateOrderPage extends StatelessWidget {
                 const SizedBox(height: 12),
                 CustomButton(
                   text: 'Cancelar',
-                  backgroundColor: const Color.fromARGB(255, 251, 251, 255),
-                  textColor: Colors.red,
+                  backgroundColor: blanco,
+                  textColor: rojo,
                   onPressed: () {
                     Navigator.push(
                       context,

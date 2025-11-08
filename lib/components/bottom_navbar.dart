@@ -3,6 +3,7 @@ import 'package:ship_tracker/pages/home.dart';
 import 'package:ship_tracker/pages/orders_page.dart';
 import 'package:ship_tracker/pages/stats_page.dart';
 import 'package:ship_tracker/pages/profile_page.dart';
+import 'package:ship_tracker/theme/theme.dart';
 
 class BottomNavBar extends StatelessWidget {
   final int selectedIndex;
@@ -17,11 +18,11 @@ class BottomNavBar extends StatelessWidget {
     return Container(
       height: 60,
       decoration: BoxDecoration(
-        color: const Color(0xFF0E0E2D),
+        color: azulOscuro,
         borderRadius: const BorderRadius.vertical(top: Radius.circular(20)),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.1),
+            color: negro,
             blurRadius: 8,
             offset: const Offset(0, -2),
           ),
@@ -32,7 +33,7 @@ class BottomNavBar extends StatelessWidget {
         children: [
           _navItem(context, Icons.home, 0, const HomePage()),
           _navItem(context, Icons.receipt_long, 1, const OrdersPage()),
-          const SizedBox(width: 40), // espacio para el botón flotante central
+          const SizedBox(width: 40), 
           _navItem(context, Icons.bar_chart, 2, const StatsPage()),
           _navItem(context, Icons.person, 3, const EditProfilePage()),
         ],
@@ -44,10 +45,9 @@ class BottomNavBar extends StatelessWidget {
     final bool isActive = index == selectedIndex;
 
     return GestureDetector(
-      behavior: HitTestBehavior.translucent, // 👈 agranda el área táctil
+      behavior: HitTestBehavior.translucent, 
       onTap: () {
         if (!isActive) {
-          // Reemplaza la vista actual sin apilar (no vuelve atrás con “back”)
           Navigator.pushReplacement(
             context,
             MaterialPageRoute(builder: (_) => page),
@@ -57,15 +57,15 @@ class BottomNavBar extends StatelessWidget {
       child: Container(
         width: 60,
         height: 60,
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
           shape: BoxShape.circle,
-          color: Color(0xFF0E0E2D), // mismo color que el fondo (invisible)
+          color: azulOscuro, 
         ),
         alignment: Alignment.center,
         child: Icon(
           icon,
           size: 28,
-          color: isActive ? const Color(0xFF15A77F) : Colors.white,
+          color: isActive ? verde : blanco,
         ),
       ),
     );

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../components/order_detail_modal.dart';
+import 'package:ship_tracker/theme/theme.dart';
 
 class OrderCard extends StatelessWidget {
   final String codigo;
@@ -20,23 +21,22 @@ class OrderCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        // 👇 Muestra modal al tocar cualquier parte de la card
         showModalBottomSheet(
           context: context,
-          backgroundColor: Colors.transparent, // fondo del modal transparente
+          backgroundColor: transparencia, 
           isScrollControlled: true,
-          builder: (_) => const OrderDetailModal(), // modal aparte
+          builder: (_) => const OrderDetailModal(), 
         );
       },
       child: Container(
         margin: const EdgeInsets.symmetric(vertical: 6),
         padding: const EdgeInsets.all(14),
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: blanco,
           borderRadius: BorderRadius.circular(12),
           boxShadow: [
             BoxShadow(
-              color: Colors.grey.withOpacity(0.2),
+              color: gris,
               blurRadius: 4,
               offset: const Offset(0, 2),
             ),
@@ -53,21 +53,21 @@ class OrderCard extends StatelessWidget {
                     '#$codigo',
                     style: GoogleFonts.inter(
                       fontWeight: FontWeight.bold,
-                      color: Colors.black87,
+                      color: negro,
                       fontSize: 15,
                     ),
                   ),
                   const SizedBox(height: 4),
                   Row(
                     children: [
-                      const Icon(Icons.location_on, color: Colors.black54, size: 16),
-                      const SizedBox(width: 4),
+                      Icon(Icons.location_on, color: negro, size: 16),
+                      SizedBox(width: 4),
                       Expanded(
                         child: Text(
                           direccion,
                           style: GoogleFonts.inter(
                             fontSize: 13,
-                            color: Colors.black54,
+                            color: negro,
                           ),
                         ),
                       ),

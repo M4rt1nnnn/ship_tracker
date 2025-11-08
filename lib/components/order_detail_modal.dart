@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:ship_tracker/pages/order_canceled.dart';
 import 'package:ship_tracker/pages/order_completed.dart';
 import '../components/button.dart';
+import 'package:ship_tracker/theme/theme.dart';
 
 class OrderDetailModal extends StatelessWidget {
   const OrderDetailModal({super.key});
@@ -11,8 +12,8 @@ class OrderDetailModal extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 330,
-      decoration: const BoxDecoration(
-        color: Color(0xFF0E0E2D),
+      decoration: BoxDecoration(
+        color: azulOscuro,
         borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
       ),
       padding: const EdgeInsets.all(20),
@@ -27,18 +28,18 @@ class OrderDetailModal extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text('María Becerra',
-                      style: GoogleFonts.inter(color: Colors.white, fontWeight: FontWeight.bold)),
-                  Text('12.901.345-K', style: GoogleFonts.inter(color: Colors.white70)),
+                      style: GoogleFonts.inter(color: blanco, fontWeight: FontWeight.bold)),
+                  Text('12.901.345-K', style: GoogleFonts.inter(color: blanco)),
                 ],
               ),
               const Spacer(),
               Text('#ABCD-1234',
-                  style: GoogleFonts.inter(color: Colors.white, fontWeight: FontWeight.w600)),
+                  style: GoogleFonts.inter(color: blanco, fontWeight: FontWeight.w600)),
             ],
           ),
           const SizedBox(height: 18),
           Text('Detalle del envío:',
-              style: GoogleFonts.inter(color: Colors.white, fontWeight: FontWeight.bold)),
+              style: GoogleFonts.inter(color: blanco, fontWeight: FontWeight.bold)),
           const SizedBox(height: 10),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -59,8 +60,8 @@ class OrderDetailModal extends StatelessWidget {
               Expanded(
                 child: CustomButton(
                   text: 'Confirmar',
-                  backgroundColor: Colors.green,
-                  textColor: const Color.fromARGB(255, 255, 255, 255),
+                  backgroundColor: verdeClaro,
+                  textColor: blanco,
                   onPressed: () {
                     Navigator.push(
                       context,
@@ -69,12 +70,12 @@ class OrderDetailModal extends StatelessWidget {
                   },
                 ),
               ),
-              const SizedBox(width: 12), // separación entre botones
+              const SizedBox(width: 12), 
               Expanded(
                 child: CustomButton(
                   text: 'Cancelar',
-                  backgroundColor: Colors.red,
-                  textColor: const Color.fromARGB(255, 255, 255, 255),
+                  backgroundColor: rojo,
+                  textColor: blanco,
                   onPressed: () {
                     Navigator.push(
                       context,
@@ -94,9 +95,9 @@ class OrderDetailModal extends StatelessWidget {
   Widget _infoItem(IconData icon, String label) {
     return Row(
       children: [
-        Icon(icon, color: Colors.white70, size: 18),
+        Icon(icon, color: blanco, size: 18),
         const SizedBox(width: 4),
-        Text(label, style: GoogleFonts.inter(color: Colors.white70)),
+        Text(label, style: GoogleFonts.inter(color: blanco)),
       ],
     );
   }

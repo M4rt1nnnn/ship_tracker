@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:ship_tracker/theme/theme.dart';
 
 class OrderFilter extends StatelessWidget {
   final VoidCallback? onTap; 
@@ -12,28 +13,28 @@ class OrderFilter extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
         decoration: BoxDecoration(
-          color: Colors.grey[200], // fondo gris claro
+          color: gris, 
           borderRadius: BorderRadius.circular(12),
         ),
         child: Row(
           children: [
-            const Icon(
-              Icons.sort, // ícono de filtro/orden
-              color: Color(0xFF15A77F),
+            Icon(
+              Icons.sort, 
+              color: verde,
               size: 22,
             ),
             const SizedBox(width: 10),
             Text(
               'Ordenar por',
               style: GoogleFonts.inter(
-                color: Colors.grey[700],
+                color: grisOscuro,
                 fontSize: 14,
               ),
             ),
             const Spacer(),
-            const Icon(
+            Icon(
               Icons.keyboard_arrow_down_rounded,
-              color: Colors.grey,
+              color: gris,
               size: 20,
             ),
           ],

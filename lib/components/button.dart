@@ -12,7 +12,7 @@ class CustomButton extends StatelessWidget {
     super.key,
     required this.text,
     required this.onPressed,
-    this.backgroundColor = const Color(0xFF15A77F), // verde predeterminado
+    this.backgroundColor = const Color(0xFF15A77F), 
     this.textColor = Colors.white,
     this.width = 300,
     this.height = 48,
@@ -28,9 +28,9 @@ class CustomButton extends StatelessWidget {
         style: ElevatedButton.styleFrom(
           backgroundColor: backgroundColor,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(24), // bordes redondeados
+            borderRadius: BorderRadius.circular(24), 
           ),
-          elevation: 0, // sin sombra
+          elevation: 0, 
         ),
         child: Text(
           text,

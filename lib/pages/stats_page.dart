@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:ship_tracker/components/bottom_navbar.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:ship_tracker/theme/theme.dart';
 
 class StatsPage extends StatefulWidget {
   const StatsPage({super.key});
@@ -19,16 +20,16 @@ class _StatsPageState extends State<StatsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF5F5F5),
+      backgroundColor: blanco,
       appBar: AppBar(
-          backgroundColor: const Color(0xFF15A77F),
-          foregroundColor: Colors.white,
+          backgroundColor: verde,
+          foregroundColor: blanco,
           elevation: 0,
           title: Text(
             'Estadísticas',
             style: GoogleFonts.archivoBlack(
               fontSize: 20,
-              color: Colors.white,
+              color: blanco,
             ),
           ),
           centerTitle: true,
@@ -96,19 +97,19 @@ class _StatsPageState extends State<StatsPage> {
                         barRods: [
                           BarChartRodData(
                             toY: completados[i].toDouble(),
-                            color: const Color(0xFF15A77F),
+                            color: verde,
                             width: 10,
                             borderRadius: BorderRadius.circular(4),
                           ),
                           BarChartRodData(
                             toY: pendientes[i].toDouble(),
-                            color: const Color(0xFF00BCD4),
+                            color: verde,
                             width: 10,
                             borderRadius: BorderRadius.circular(4),
                           ),
                           BarChartRodData(
                             toY: cancelados[i].toDouble(),
-                            color: const Color(0xFFF44336),
+                            color: rojo,
                             width: 10,
                             borderRadius: BorderRadius.circular(4),
                           ),
@@ -120,24 +121,23 @@ class _StatsPageState extends State<StatsPage> {
               ),
               const SizedBox(height: 20),
 
-              // Cuadros de métricas
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: const [
+                children: [
                   _MetricCard(
-                    color: Color(0xFF15A77F),
+                    color: verde,
                     icon: Icons.check,
                     title: 'Completadas',
                     value: '35',
                   ),
                   _MetricCard(
-                    color: Color(0xFF00BCD4),
+                    color: verde,
                     icon: Icons.hourglass_bottom,
                     title: 'Pendientes',
                     value: '15',
                   ),
                   _MetricCard(
-                    color: Color(0xFFF44336),
+                    color: rojo,
                     icon: Icons.close,
                     title: 'Canceladas',
                     value: '8',
@@ -147,15 +147,14 @@ class _StatsPageState extends State<StatsPage> {
 
               const SizedBox(height: 30),
 
-              // Gráfico de Tasa de Éxito
               Container(
                 padding: const EdgeInsets.all(12),
                 decoration: BoxDecoration(
-                  color: Colors.white,
+                  color: blanco,
                   borderRadius: BorderRadius.circular(12),
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.black.withOpacity(0.05),
+                      color: negro,
                       blurRadius: 5,
                       offset: const Offset(2, 2),
                     ),
@@ -165,7 +164,7 @@ class _StatsPageState extends State<StatsPage> {
                   children: [
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: const [
+                      children: [
                         Text(
                           'Tasa de éxito',
                           style: TextStyle(
@@ -174,7 +173,7 @@ class _StatsPageState extends State<StatsPage> {
                         Text(
                           'Últimos 5 meses',
                           style:
-                              TextStyle(fontSize: 12, color: Colors.grey),
+                              TextStyle(fontSize: 12, color: grisOscuro),
                         ),
                       ],
                     ),
@@ -187,7 +186,7 @@ class _StatsPageState extends State<StatsPage> {
                             show: true,
                             drawVerticalLine: false,
                             getDrawingHorizontalLine: (value) => FlLine(
-                              color: Colors.grey.withOpacity(0.2),
+                              color: gris,
                               strokeWidth: 1,
                             ),
                           ),
@@ -253,7 +252,7 @@ class _StatsPageState extends State<StatsPage> {
                           lineBarsData: [
                             LineChartBarData(
                               isCurved: true,
-                              color: const Color(0xFF15A77F),
+                              color: verde,
                               barWidth: 3,
                               dotData: FlDotData(show: true),
                               belowBarData:
@@ -278,13 +277,11 @@ class _StatsPageState extends State<StatsPage> {
         ),
       ),
 
-      // 🟩 Barra inferior
       bottomNavigationBar: const BottomNavBar(selectedIndex: 2),
     );
   }
 }
 
-// Widget auxiliar para los cuadros de métricas
 class _MetricCard extends StatelessWidget {
   final Color color;
   final IconData icon;
@@ -308,7 +305,7 @@ class _MetricCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(12),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.1),
+            color: negro,
             blurRadius: 4,
             offset: const Offset(2, 2),
           ),
@@ -317,20 +314,20 @@ class _MetricCard extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(icon, color: Colors.white, size: 24),
+          Icon(icon, color: blanco, size: 24),
           const SizedBox(height: 6),
           Text(
             title,
-            style: const TextStyle(
-              color: Colors.white,
+            style: TextStyle(
+              color: blanco,
               fontSize: 12,
               fontWeight: FontWeight.bold,
             ),
           ),
           Text(
             value,
-            style: const TextStyle(
-              color: Colors.white,
+            style: TextStyle(
+              color: blanco,
               fontSize: 16,
               fontWeight: FontWeight.bold,
             ),

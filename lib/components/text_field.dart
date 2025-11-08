@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:ship_tracker/theme/theme.dart';
 
 class CustomTextField extends StatelessWidget {
   final String labelText;
   final bool obscureText;
   final TextInputType keyboardType;
   final int maxLines;
+  final String? Function(String?)? validator;
+  final TextEditingController? controller;
 
   const CustomTextField({
     super.key,
@@ -12,44 +15,47 @@ class CustomTextField extends StatelessWidget {
     this.obscureText = false,
     this.keyboardType = TextInputType.text,
     this.maxLines = 1,
+    this.validator,
+    this.controller,
   });
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 300, // ancho controlado
-      child: TextField(
+      width: 300, 
+      child: TextFormField(
+        controller: controller,
         maxLines: maxLines,
         obscureText: obscureText,
         keyboardType: keyboardType,
+        validator: validator,
         decoration: InputDecoration(
+          errorMaxLines: 2,
           labelText: labelText,
-          labelStyle: const TextStyle(color: Colors.grey),
-          floatingLabelStyle: const TextStyle(
-            color: Color(0xFF15A77F),
+          labelStyle: TextStyle(color: grisOscuro),
+          floatingLabelStyle: TextStyle(
+            color: verde,
             fontWeight: FontWeight.bold,
           ),
 
-          // Borde normal
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12),
-            borderSide: const BorderSide(
-              color: Colors.grey,
+            borderSide: BorderSide(
+              color: grisOscuro,
             ),
           ),
 
-          // Borde cuando se hace foco
+
           focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(12), // 👈 igual en ambos
-            borderSide: const BorderSide(
-              color: Color(0xFF15A77F),
+            borderRadius: BorderRadius.circular(12), 
+            borderSide: BorderSide(
+              color: verde,
               width: 2,
             ),
           ),
 
-          // Fondo
           filled: true,
-          fillColor: Colors.white,
+          fillColor: blanco,
           contentPadding:
               const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
         ),

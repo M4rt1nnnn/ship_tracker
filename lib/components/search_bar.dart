@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:ship_tracker/theme/theme.dart';
 
 class Search extends StatelessWidget {
   const Search({super.key});
@@ -9,32 +10,31 @@ class Search extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 4),
       decoration: BoxDecoration(
-        color: Colors.grey[200], // Fondo gris claro
+        color: gris, 
         borderRadius: BorderRadius.circular(12),
       ),
       child: Row(
         children: [
-          const Icon(
+          Icon(
             Icons.search,
-            color: Color(0xFF15A77F),
+            color: verde,
             size: 22,
           ),
-          const SizedBox(width: 10),
+          SizedBox(width: 10),
 
-          // 👉 Campo de texto editable
           Expanded(
             child: TextField(
-              cursorColor: const Color(0xFF15A77F),
+              cursorColor: verde,
               style: GoogleFonts.inter(
                 fontSize: 14,
-                color: Colors.black87,
+                color: negro,
               ),
               decoration: InputDecoration(
-                isDense: true, // ajusta altura
-                border: InputBorder.none, // sin borde
+                isDense: true, 
+                border: InputBorder.none, 
                 hintText: 'Buscar pedido',
                 hintStyle: GoogleFonts.inter(
-                  color: Colors.grey[600],
+                  color: grisOscuro,
                   fontSize: 14,
                 ),
               ),
