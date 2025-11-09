@@ -102,15 +102,5 @@ class OrderDetailModal extends StatelessWidget {
     );
   }
 
-  Widget _actionButton(String text, Color color, Color textColor) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 28, vertical: 10),
-      decoration: BoxDecoration(
-        color: color,
-        borderRadius: BorderRadius.circular(10),
-      ),
-      child: Text(text,
-          style: GoogleFonts.inter(color: textColor, fontWeight: FontWeight.w600)),
-    );
-  }
+
 }

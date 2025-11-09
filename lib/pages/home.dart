@@ -23,6 +23,7 @@ class _HomePageState extends State<HomePage> {
         appBar: AppBar(
           backgroundColor: verde,
           foregroundColor: blanco,
+          automaticallyImplyLeading: false,
           elevation: 0,
           title: Text(
             'Inicio',
