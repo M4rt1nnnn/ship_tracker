@@ -15,7 +15,6 @@ class EditProfilePage extends StatefulWidget {
 }
 
 class _EditProfilePageState extends State<EditProfilePage> {
-  //Controladores
   final _nameController = TextEditingController();
   final _lastNameController = TextEditingController();
   final _rutController = TextEditingController();
@@ -23,7 +22,6 @@ class _EditProfilePageState extends State<EditProfilePage> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
 
-  //Claves para acceder a los estados de los campos
   final _nameKey = GlobalKey<CustomTextFieldState>();
   final _lastNameKey = GlobalKey<CustomTextFieldState>();
   final _rutKey = GlobalKey<CustomTextFieldState>();
@@ -32,6 +30,14 @@ class _EditProfilePageState extends State<EditProfilePage> {
   final _passwordKey = GlobalKey<CustomTextFieldState>();
 
   bool _isSaving = false;
+
+  Future<bool> _goBackToHome() async {
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(builder: (context) => const HomePage()),
+    );
+    return false;
+  }
 
   @override
   void dispose() {
@@ -56,30 +62,23 @@ class _EditProfilePageState extends State<EditProfilePage> {
 
     if (errors.any((e) => e != null)) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
+        SnackBar(
           content: Text('Por favor, corrige los campos con error.'),
-          backgroundColor: Colors.redAccent,
+          backgroundColor: rojo,
         ),
       );
       return;
     }
 
-    setState(() {
-      _isSaving = true;
-    });
-
+    setState(() => _isSaving = true);
     await Future.delayed(const Duration(seconds: 2));
-
     if (!mounted) return;
-
-    setState(() {
-      _isSaving = false;
-    });
+    setState(() => _isSaving = false);
 
     ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(
+      SnackBar(
         content: Text('¡Perfil actualizado correctamente!'),
-        backgroundColor: Colors.green,
+        backgroundColor: verde,
       ),
     );
 
@@ -91,145 +90,158 @@ class _EditProfilePageState extends State<EditProfilePage> {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () => FocusScope.of(context).unfocus(),
-      child: Scaffold(
-        backgroundColor: blanco,
-        appBar: AppBar(
-          backgroundColor: verde,
-          foregroundColor: blanco,
-          elevation: 0,
-          title: Text(
-            'Editar perfil',
-            style: GoogleFonts.archivoBlack(
-              fontSize: 20,
-              color: blanco,
+    return WillPopScope(
+      onWillPop: _goBackToHome, 
+      child: GestureDetector(
+        onTap: () => FocusScope.of(context).unfocus(),
+        child: Scaffold(
+          backgroundColor: blanco,
+          appBar: AppBar(
+            backgroundColor: verde,
+            foregroundColor: blanco,
+            elevation: 0,
+            automaticallyImplyLeading: true,
+            title: Text(
+              'Editar perfil',
+              style: GoogleFonts.archivoBlack(
+                fontSize: 20,
+                color: blanco,
+              ),
+            ),
+            centerTitle: true,
+            leading: IconButton(
+              icon: const Icon(Icons.arrow_back_ios_new_rounded),
+              onPressed: () {
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (context) => const HomePage()),
+                );
+              },
             ),
           ),
-          centerTitle: true,
-        ),
-        body: Stack(
-          children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-              child: SingleChildScrollView(
-                physics: const BouncingScrollPhysics(),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    const SizedBox(height: 16),
-                    Center(
-                      child: Stack(
-                        alignment: Alignment.center,
-                        children: [
-                          CircleAvatar(
-                            radius: 40,
-                            backgroundColor: gris,
-                            child: Icon(
-                              Icons.person_outline,
-                              size: 50,
-                              color: negro,
+          body: Stack(
+            children: [
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                child: SingleChildScrollView(
+                  physics: const BouncingScrollPhysics(),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      const SizedBox(height: 16),
+                      Center(
+                        child: Stack(
+                          alignment: Alignment.center,
+                          children: [
+                            CircleAvatar(
+                              radius: 40,
+                              backgroundColor: gris,
+                              child: Icon(
+                                Icons.person_outline,
+                                size: 50,
+                                color: negro,
+                              ),
                             ),
-                          ),
-                          Positioned(
-                            bottom: 0,
-                            right: 0,
-                            child: GestureDetector(
-                              onTap: () {},
-                              child: Container(
-                                padding: const EdgeInsets.all(6),
-                                decoration: BoxDecoration(
-                                  color: verde,
-                                  shape: BoxShape.circle,
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: negro,
-                                      blurRadius: 4,
-                                      offset: const Offset(0, 2),
-                                    ),
-                                  ],
-                                ),
-                                child: Icon(
-                                  Icons.edit,
-                                  color: blanco,
-                                  size: 18,
+                            Positioned(
+                              bottom: 0,
+                              right: 0,
+                              child: GestureDetector(
+                                onTap: () {
+
+                                },
+                                child: Container(
+                                  padding: const EdgeInsets.all(6),
+                                  decoration: BoxDecoration(
+                                    color: verde,
+                                    shape: BoxShape.circle,
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: negro,
+                                        blurRadius: 4,
+                                        offset: const Offset(0, 2),
+                                      ),
+                                    ],
+                                  ),
+                                  child: Icon(
+                                    Icons.edit,
+                                    color: blanco,
+                                    size: 18,
+                                  ),
                                 ),
                               ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
-                    ),
-                    const SizedBox(height: 24),
-
-                    CustomTextField(
-                      key: _nameKey,
-                      labelText: 'Nombre',
-                      controller: _nameController,
-                      validator: Validators.validateName,
-                    ),
-                    const SizedBox(height: 12),
-                    CustomTextField(
-                      key: _lastNameKey,
-                      labelText: 'Apellido',
-                      controller: _lastNameController,
-                      validator: Validators.validateLastName,
-                    ),
-                    const SizedBox(height: 12),
-                    CustomTextField(
-                      key: _rutKey,
-                      labelText: 'RUT',
-                      controller: _rutController,
-                      validator: Validators.validateRut,
-                      keyboardType: TextInputType.text,
-                    ),
-                    const SizedBox(height: 12),
-                    CustomTextField(
-                      key: _phoneKey,
-                      labelText: 'Teléfono',
-                      controller: _phoneController,
-                      validator: Validators.validatePhone,
-                      keyboardType: TextInputType.phone,
-                    ),
-                    const SizedBox(height: 12),
-                    CustomTextField(
-                      key: _emailKey,
-                      labelText: 'Correo electrónico',
-                      controller: _emailController,
-                      validator: Validators.validateEmail,
-                      keyboardType: TextInputType.emailAddress,
-                    ),
-                    const SizedBox(height: 12),
-                    CustomTextField(
-                      key: _passwordKey,
-                      labelText: 'Contraseña',
-                      obscureText: true,
-                      controller: _passwordController,
-                      validator: Validators.validatePassword,
-                    ),
-                    const SizedBox(height: 48),
-
-                    CustomButton(
-                      text: 'Guardar cambios',
-                      backgroundColor: azulOscuro,
-                      textColor: blanco,
-                      onPressed: _isSaving ? null : _saveProfile,
-                    ),
-                  ],
+                      const SizedBox(height: 24),
+                      CustomTextField(
+                        key: _nameKey,
+                        labelText: 'Nombre',
+                        controller: _nameController,
+                        validator: Validators.validateName,
+                      ),
+                      const SizedBox(height: 12),
+                      CustomTextField(
+                        key: _lastNameKey,
+                        labelText: 'Apellido',
+                        controller: _lastNameController,
+                        validator: Validators.validateLastName,
+                      ),
+                      const SizedBox(height: 12),
+                      CustomTextField(
+                        key: _rutKey,
+                        labelText: 'RUT',
+                        controller: _rutController,
+                        validator: Validators.validateRut,
+                        keyboardType: TextInputType.text,
+                      ),
+                      const SizedBox(height: 12),
+                      CustomTextField(
+                        key: _phoneKey,
+                        labelText: 'Teléfono',
+                        controller: _phoneController,
+                        validator: Validators.validatePhone,
+                        keyboardType: TextInputType.phone,
+                      ),
+                      const SizedBox(height: 12),
+                      CustomTextField(
+                        key: _emailKey,
+                        labelText: 'Correo electrónico',
+                        controller: _emailController,
+                        validator: Validators.validateEmail,
+                        keyboardType: TextInputType.emailAddress,
+                      ),
+                      const SizedBox(height: 12),
+                      CustomTextField(
+                        key: _passwordKey,
+                        labelText: 'Contraseña',
+                        obscureText: true,
+                        controller: _passwordController,
+                        validator: Validators.validatePassword,
+                      ),
+                      const SizedBox(height: 48),
+                      CustomButton(
+                        text: 'Guardar cambios',
+                        backgroundColor: azulOscuro,
+                        textColor: blanco,
+                        onPressed: _isSaving ? null : _saveProfile,
+                      ),
+                    ],
+                  ),
                 ),
               ),
-            ),
-
-            if (_isSaving)
-              Container(
-                color: Colors.black.withAlpha(128),
-                child: const Center(
-                  child: CircularProgressIndicator(),
+              if (_isSaving)
+                Container(
+                  color: Colors.black.withAlpha(128),
+                  child: const Center(
+                    child: CircularProgressIndicator(),
+                  ),
                 ),
-              ),
-          ],
+            ],
+          ),
+          bottomNavigationBar: const BottomNavBar(selectedIndex: 3),
         ),
-        bottomNavigationBar: const BottomNavBar(selectedIndex: 3),
       ),
     );
   }

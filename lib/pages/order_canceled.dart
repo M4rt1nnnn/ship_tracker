@@ -53,12 +53,15 @@ class _CancelOrderSuccessPageState extends State<CancelOrderSuccessPage>
       body: Column(
         children: [
           Expanded(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+            child: ClipRRect(
+              borderRadius: const BorderRadius.vertical(
+                bottom: Radius.circular(0),
+              ),
               child: Image.asset(
                 'images/pic.jpg',
-                fit: BoxFit.contain,
+                fit: BoxFit.cover, 
                 width: double.infinity,
+                height: double.infinity,
               ),
             ),
           ),
@@ -67,29 +70,29 @@ class _CancelOrderSuccessPageState extends State<CancelOrderSuccessPage>
             child: Container(
               width: double.infinity,
               decoration: BoxDecoration(
-                color: rojo, 
-                borderRadius: BorderRadius.vertical(top: Radius.circular(40)),
+                color: rojo,
+                borderRadius:
+                    const BorderRadius.vertical(top: Radius.circular(40)),
               ),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   ScaleTransition(
                     scale: _scaleAnimation,
-                    child: Icon(
+                    child: const Icon(
                       Icons.block_rounded,
-                      color: blanco,
+                      color: Colors.white,
                       size: 80,
                     ),
                   ),
                   const SizedBox(height: 20),
-
                   FadeTransition(
                     opacity: _fadeAnimation,
                     child: Text(
                       'Pedido Cancelado\nExitosamente',
                       textAlign: TextAlign.center,
                       style: GoogleFonts.archivoBlack(
-                        color: blanco,
+                        color: Colors.white,
                         fontSize: 22,
                       ),
                     ),
