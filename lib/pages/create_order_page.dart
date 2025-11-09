@@ -13,7 +13,6 @@ class CreateOrderPage extends StatefulWidget {
 }
 
 class _CreateOrderPageState extends State<CreateOrderPage> {
-  //Controladores
   final _idController = TextEditingController();
   final _nameController = TextEditingController();
   final _rutController = TextEditingController();
@@ -21,7 +20,6 @@ class _CreateOrderPageState extends State<CreateOrderPage> {
   final _timeController = TextEditingController(); 
   final _notesController = TextEditingController();
 
-  //Claves para validación
   final _idKey = GlobalKey<CustomTextFieldState>();
   final _nameKey = GlobalKey<CustomTextFieldState>();
   final _rutKey = GlobalKey<CustomTextFieldState>();

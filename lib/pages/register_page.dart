@@ -14,15 +14,13 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
-  //Controladores
   final _nameController = TextEditingController();
   final _lastNameController = TextEditingController();
   final _rutController = TextEditingController();
   final _phoneController = TextEditingController();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
-
-  //Claves para acceder a los campos (y validar)
+  
   final _nameKey = GlobalKey<CustomTextFieldState>();
   final _lastNameKey = GlobalKey<CustomTextFieldState>();
   final _rutKey = GlobalKey<CustomTextFieldState>();
@@ -55,9 +53,9 @@ class _RegisterPageState extends State<RegisterPage> {
 
     if (errors.any((e) => e != null)) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
+        SnackBar(
           content: Text('Por favor, corrige los campos con error.'),
-          backgroundColor: Colors.redAccent,
+          backgroundColor: rojo,
         ),
       );
       return;
@@ -76,9 +74,9 @@ class _RegisterPageState extends State<RegisterPage> {
     });
 
     ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(
+      SnackBar(
         content: Text('¡Registro exitoso!'),
-        backgroundColor: Colors.green,
+        backgroundColor: verde,
       ),
     );
 
@@ -221,7 +219,7 @@ class _RegisterPageState extends State<RegisterPage> {
 
             if (_isLoading)
               Container(
-                color: Colors.black.withAlpha(128),
+                color: negro,
                 child: const Center(
                   child: CircularProgressIndicator(),
                 ),
